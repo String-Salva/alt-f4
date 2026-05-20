@@ -1,12 +1,12 @@
-package com.altf4.service;
+package com.altf4.altf4.service;
 
-import java.util.List;
-import java.util.Optional;
+import com.altf4.altf4.entity.Equipo;
+import com.altf4.altf4.repository.EquipoRepository;
 
 import org.springframework.stereotype.Service;
 
-import com.altf4.entity.Equipo;
-import com.altf4.repository.EquipoRepository;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EquipoService {
