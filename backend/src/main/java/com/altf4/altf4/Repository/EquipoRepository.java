@@ -1,4 +1,10 @@
 package com.altf4.altf4.repository;
+<<<<<<< HEAD
+=======
+import com.altf4.altf4.entity.Equipo;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+>>>>>>> origin/main
 
 import java.util.List;
 import java.util.Optional;

@@ -1,3 +1,4 @@
+package com.altf4.altf4.entity;
 import java.util.List;
 import java.util.ArrayList;
 
