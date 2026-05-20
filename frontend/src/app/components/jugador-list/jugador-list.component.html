@@ -1,0 +1,118 @@
+<div class="jugadores-section">
+
+  <h2>👥 Jugadores de {{ equipo?.nombre }}</h2>
+
+  <button
+    class="btn btn-primary"
+    (click)="abrirFormulario()"
+  >
+    Nuevo Jugador
+  </button>
+
+  <div
+    *ngIf="mostrarFormulario"
+    class="formulario"
+  >
+
+    <h3>Agregar Jugador</h3>
+
+    <form [formGroup]="formulario">
+
+      <input
+        type="text"
+        placeholder="Nombre"
+        formControlName="nombre"
+      >
+
+      <input
+        type="number"
+        placeholder="Dorsal"
+        formControlName="dorsal"
+      >
+
+      <select formControlName="posicion">
+
+        <option value="">Selecciona posición</option>
+        <option value="Portero">Portero</option>
+        <option value="Defensa">Defensa</option>
+        <option value="Centrocampista">Centrocampista</option>
+        <option value="Delantero">Delantero</option>
+
+      </select>
+
+      <button
+        type="button"
+        class="btn btn-success"
+        (click)="guardarJugador()"
+      >
+        Guardar
+      </button>
+
+      <button
+        type="button"
+        class="btn btn-secondary"
+        (click)="mostrarFormulario = false"
+      >
+        Cancelar
+      </button>
+
+    </form>
+
+  </div>
+
+  <div class="jugadores-tabla">
+
+    <table *ngIf="jugadores.length > 0">
+
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Nombre</th>
+          <th>Posición</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+
+      <tbody>
+
+        <tr *ngFor="let jugador of jugadores">
+
+          <td class="dorsal">
+            {{ jugador.dorsal }}
+          </td>
+
+          <td>
+            {{ jugador.nombre }}
+          </td>
+
+          <td>
+            {{ jugador.posicion }}
+          </td>
+
+          <td>
+
+            <button
+              class="btn btn-danger btn-small"
+              (click)="eliminarJugador(jugador.id)"
+            >
+              Eliminar
+            </button>
+
+          </td>
+
+        </tr>
+
+      </tbody>
+
+    </table>
+
+    <p
+      *ngIf="jugadores.length === 0"
+      class="sin-jugadores"
+    >
+      No hay jugadores en este equipo
+    </p>
+
+  </div>
+
+</div>

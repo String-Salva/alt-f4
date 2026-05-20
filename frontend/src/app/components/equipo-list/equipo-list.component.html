@@ -1,0 +1,28 @@
+<div class="container">
+  <h1>⚽ Gestión de Equipos</h1>
+  
+  <button (click)="abrirFormulario()" class="btn btn-primary">Nuevo Equipo</button>
+  
+  <!-- Formulario -->
+  <div *ngIf="mostrarFormulario" class="formulario">
+    <h3>Crear Equipo</h3>
+    <form [formGroup]="formulario">
+      <input formControlName="nombre" placeholder="Nombre del equipo" required>
+      <input formControlName="ciudad" placeholder="Ciudad" required>
+      <button (click)="guardarEquipo()" class="btn btn-success">Guardar</button>
+      <button (click)="mostrarFormulario = false" class="btn btn-secondary">Cancelar</button>
+    </form>
+  </div>
+  
+  <!-- Lista de equipos -->
+  <div class="equipos-grid">
+    <div *ngFor="let equipo of equipos" class="equipo-card" (click)="seleccionarEquipo(equipo)">
+      <h3>{{ equipo.nombre }}</h3>
+      <p>📍 {{ equipo.ciudad }}</p>
+      <button (click)="eliminarEquipo(equipo.id)" class="btn btn-danger">Eliminar</button>
+    </div>
+  </div>
+  
+  <!-- Ver jugadores del equipo seleccionado -->
+  <app-jugador-list *ngIf="equipoSeleccionado" [equipoId]="equipoSeleccionado.id!"></app-jugador-list>
+</div>
