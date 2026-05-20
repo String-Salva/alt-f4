@@ -1,41 +1,49 @@
 package com.altf4.altf4.entity;
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
-import jakarta.persistence.*;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
 @Entity(name = "equipos")
 @Table(name = "EQUIPOS")
 public class Equipo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
-
+    private Long id;
+    
     @Column(nullable = false)
     private String nombre;
-
+    
     @Column
     private String ciudad;
-
+    
     @OneToMany(mappedBy = "equipo", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Jugador> jugadores;
+    private List<Jugador> jugadores = new ArrayList<>();
 
     public Equipo() {
     }
 
     public Equipo(Long id, String nombre, String ciudad, List<Jugador> jugadores) {
-        Id = id;
+        this.id = id;
         this.nombre = nombre;
         this.ciudad = ciudad;
         this.jugadores = jugadores;
     }
 
     public Long getId() {
-        return Id;
+        return id;
     }
 
     public void setId(Long id) {
-        Id = id;
+        this.id = id;
     }
 
     public String getNombre() {
@@ -64,7 +72,6 @@ public class Equipo {
 
     @Override
     public String toString() {
-        return Id + "|| Equipo " + nombre + " de " + ciudad;
+        return id + "|| Equipo " + nombre + " de " + ciudad;
     }
-
 }

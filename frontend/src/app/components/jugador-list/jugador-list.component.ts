@@ -45,14 +45,14 @@ export class JugadorListComponent implements OnInit {
   cargarEquipo(): void {
     this.equipoService.obtenerEquipo(this.equipoId).subscribe({
       next: (data) => this.equipo = data,
-      error: (error) => console.error(error)
+      error: (error) => console.error('Error al cargar equipo:', error)
     });
   }
 
   cargarJugadores(): void {
     this.jugadorService.jugadoresPorEquipo(this.equipoId).subscribe({
       next: (data) => this.jugadores = data,
-      error: (error) => console.error(error)
+      error: (error) => console.error('Error al cargar jugadores:', error)
     });
   }
 
@@ -64,17 +64,23 @@ export class JugadorListComponent implements OnInit {
   guardarJugador(): void {
     if (this.formulario.valid) {
       const jugador: Jugador = {
-        ...this.formulario.value,
+        nombre: this.formulario.value.nombre,
+        dorsal: this.formulario.value.dorsal,
+        posicion: this.formulario.value.posicion,
         equipo: {
-          id: this.equipoId
+          id: this.equipoId,
+          nombre: '',
+          ciudad: ''
         }
       };
+      
       this.jugadorService.crearJugador(jugador).subscribe({
         next: () => {
           this.cargarJugadores();
+          this.formulario.reset();
           this.mostrarFormulario = false;
         },
-        error: (error) => console.error(error)
+        error: (error) => console.error('Error al crear jugador:', error)
       });
     }
   }
@@ -83,7 +89,7 @@ export class JugadorListComponent implements OnInit {
     if (id && confirm('¿Eliminar jugador?')) {
       this.jugadorService.eliminarJugador(id).subscribe({
         next: () => this.cargarJugadores(),
-        error: (error) => console.error(error)
+        error: (error) => console.error('Error al eliminar jugador:', error)
       });
     }
   }

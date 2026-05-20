@@ -33,44 +33,45 @@ export class EquipoListComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.cargarEquipos();
   }
 
-  cargarEquipos() {
-    this.equipoService.listarEquipos().subscribe(
-      (data) => this.equipos = data,
-      (error) => console.error('Error cargando equipos', error)
-    );
+  cargarEquipos(): void {
+    this.equipoService.listarEquipos().subscribe({
+      next: (data) => this.equipos = data,
+      error: (error) => console.error('Error cargando equipos:', error)
+    });
   }
 
-  seleccionarEquipo(equipo: Equipo) {
+  seleccionarEquipo(equipo: Equipo): void {
     this.equipoSeleccionado = equipo;
   }
 
-  abrirFormulario() {
+  abrirFormulario(): void {
     this.mostrarFormulario = true;
     this.formulario.reset();
   }
 
-  guardarEquipo() {
+  guardarEquipo(): void {
     if (this.formulario.valid) {
-      this.equipoService.crearEquipo(this.formulario.value).subscribe(
-        () => {
+      this.equipoService.crearEquipo(this.formulario.value).subscribe({
+        next: () => {
           this.cargarEquipos();
+          this.formulario.reset();
           this.mostrarFormulario = false;
         },
-        (error) => console.error('Error creando equipo', error)
-      );
+        error: (error) => console.error('Error creando equipo:', error)
+      });
     }
   }
 
-  eliminarEquipo(id: number | undefined) {
+  eliminarEquipo(id: number | undefined): void {
     if (id && confirm('¿Deseas eliminar este equipo?')) {
-      this.equipoService.eliminarEquipo(id).subscribe(
-        () => this.cargarEquipos(),
-        (error) => console.error('Error eliminando equipo', error)
-      );
+      this.equipoService.eliminarEquipo(id).subscribe({
+        next: () => this.cargarEquipos(),
+        error: (error) => console.error('Error eliminando equipo:', error)
+      });
     }
   }
 }

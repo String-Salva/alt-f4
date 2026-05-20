@@ -1,5 +1,4 @@
 package com.altf4.altf4.service;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -10,7 +9,6 @@ import com.altf4.altf4.repository.JugadorRepository;
 
 @Service
 public class JugadorService {
-
     private final JugadorRepository repository;
 
     public JugadorService(JugadorRepository repository) {
@@ -19,6 +17,10 @@ public class JugadorService {
 
     public List<Jugador> listarJugadores() {
         return repository.findAll();
+    }
+
+    public List<Jugador> jugadoresPorEquipo(Long equipoId) {
+        return repository.findByEquipoId(equipoId);
     }
 
     public Optional<Jugador> buscarPorId(Long id) {

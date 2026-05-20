@@ -12,7 +12,7 @@ export interface Equipo {
   providedIn: 'root'
 })
 export class EquipoService {
-  private apiUrl = 'http://localhost:8080/equipos';
+  private apiUrl = 'http://localhost:8080/api/equipos';
 
   constructor(private http: HttpClient) { }
 
@@ -21,7 +21,8 @@ export class EquipoService {
   }
 
   obtenerEquipo(id: number): Observable<Equipo> {
-    return this.http.get<Equipo>(`${this.apiUrl}/${id}`);
+    const url = `${this.apiUrl}/${id}`;
+    return this.http.get<Equipo>(url);
   }
 
   crearEquipo(equipo: Equipo): Observable<Equipo> {
@@ -29,10 +30,12 @@ export class EquipoService {
   }
 
   editarEquipo(id: number, equipo: Equipo): Observable<Equipo> {
-    return this.http.put<Equipo>(`${this.apiUrl}/${id}`, equipo);
+    const url = `${this.apiUrl}/${id}`;
+    return this.http.put<Equipo>(url, equipo);
   }
 
   eliminarEquipo(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+    const url = `${this.apiUrl}/${id}`;
+    return this.http.delete<void>(url);
   }
 }

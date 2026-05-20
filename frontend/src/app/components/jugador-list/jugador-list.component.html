@@ -30,13 +30,38 @@
         formControlName="dorsal"
       >
 
-      <select formControlName="posicion">
+      <label for="posicion">
+        Posición
+      </label>
 
-        <option value="">Selecciona posición</option>
-        <option value="Portero">Portero</option>
-        <option value="Defensa">Defensa</option>
-        <option value="Centrocampista">Centrocampista</option>
-        <option value="Delantero">Delantero</option>
+      <select
+        id="posicion"
+        formControlName="posicion"
+        required
+      >
+
+        <option
+          value=""
+          disabled
+        >
+          Selecciona posición
+        </option>
+
+        <option value="PORTERO">
+          Portero
+        </option>
+
+        <option value="DEFENSA">
+          Defensa
+        </option>
+
+        <option value="CENTROCAMPISTA">
+          Centrocampista
+        </option>
+
+        <option value="DELANTERO">
+          Delantero
+        </option>
 
       </select>
 
