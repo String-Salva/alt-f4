@@ -12,7 +12,7 @@ export interface Equipo {
   providedIn: 'root'
 })
 export class EquipoService {
-  private apiUrl = 'http://localhost:8080/api/equipos';
+  private apiUrl = 'http://localhost:8080/equipos';
 
   constructor(private http: HttpClient) { }
 
