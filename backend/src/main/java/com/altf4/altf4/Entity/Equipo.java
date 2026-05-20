@@ -1,7 +1,7 @@
-
+import java.util.List;
 import java.util.ArrayList;
 
-import javax.annotation.processing.Generated;
+import jakarta.persistence.*;
 
 @Entity(name = "equipos")
 @Table(name = "EQUIPOS")
@@ -19,7 +19,8 @@ public class Equipo {
     @OneToMany(mappedBy = "equipo", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Jugador> jugadores;
 
-    public Equipo(){}
+    public Equipo() {
+    }
 
     public Equipo(Long id, String nombre, String ciudad, List<Jugador> jugadores) {
         Id = id;
@@ -62,7 +63,7 @@ public class Equipo {
 
     @Override
     public String toString() {
-        return Id+ "|| Equipo " + nombre + " de " + ciudad;
+        return Id + "|| Equipo " + nombre + " de " + ciudad;
     }
-   
+
 }
