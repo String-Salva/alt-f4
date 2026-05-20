@@ -25,7 +25,7 @@ public class Equipo {
         Id = id;
         this.nombre = nombre;
         this.ciudad = ciudad;
-        this.jugadores = new ArrayList<>();
+        this.jugadores = jugadores;
     }
 
     public Long getId() {
