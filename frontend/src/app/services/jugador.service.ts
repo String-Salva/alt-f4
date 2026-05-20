@@ -14,12 +14,11 @@ export interface Jugador {
   providedIn: 'root'
 })
 export class JugadorService {
+  private apiUrl = 'http://localhost:8080/api/jugadores';
 
-  private apiUrl = 'http://localhost:8080/jugadores';
+  constructor(private http: HttpClient) { }
 
-  constructor(private http: HttpClient) {}
-
-  obtenerJugadores(): Observable<Jugador[]> {
+  listarJugadores(): Observable<Jugador[]> {
     return this.http.get<Jugador[]>(this.apiUrl);
   }
 
@@ -27,8 +26,16 @@ export class JugadorService {
     return this.http.get<Jugador[]>(`${this.apiUrl}/equipo/${equipoId}`);
   }
 
+  obtenerJugador(id: number): Observable<Jugador> {
+    return this.http.get<Jugador>(`${this.apiUrl}/${id}`);
+  }
+
   crearJugador(jugador: Jugador): Observable<Jugador> {
     return this.http.post<Jugador>(this.apiUrl, jugador);
+  }
+
+  editarJugador(id: number, jugador: Jugador): Observable<Jugador> {
+    return this.http.put<Jugador>(`${this.apiUrl}/${id}`, jugador);
   }
 
   eliminarJugador(id: number): Observable<void> {

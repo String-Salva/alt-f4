@@ -1,10 +1,19 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EquipoService, Equipo } from '../../services/equipo.service';
-import { JugadorService } from '../../services/jugador.service';
+import { JugadorListComponent } from '../jugador-list/jugador-list.component';
 
 @Component({
   selector: 'app-equipo-list',
+  standalone: true,
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    FormsModule,
+    JugadorListComponent
+  ],
   templateUrl: './equipo-list.component.html',
   styleUrls: ['./equipo-list.component.css']
 })
@@ -16,7 +25,6 @@ export class EquipoListComponent implements OnInit {
 
   constructor(
     private equipoService: EquipoService,
-    private jugadorService: JugadorService,
     private fb: FormBuilder
   ) {
     this.formulario = this.fb.group({

@@ -21,14 +21,41 @@ h1 {
   transition: all 0.3s;
 }
 
-.btn-primary { background-color: #007bff; color: white; }
-.btn-primary:hover { background-color: #0056b3; }
-.btn-success { background-color: #28a745; color: white; }
-.btn-success:hover { background-color: #218838; }
-.btn-danger { background-color: #dc3545; color: white; }
-.btn-danger:hover { background-color: #c82333; }
-.btn-secondary { background-color: #6c757d; color: white; }
-.btn-secondary:hover { background-color: #5a6268; }
+.btn-primary {
+  background-color: #007bff;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.btn-success {
+  background-color: #28a745;
+  color: white;
+}
+
+.btn-success:hover {
+  background-color: #218838;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  color: white;
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268;
+}
 
 .formulario {
   background-color: #f8f9fa;
@@ -48,6 +75,12 @@ h1 {
   box-sizing: border-box;
 }
 
+.formulario input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
 .equipos-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -62,14 +95,23 @@ h1 {
   padding: 20px;
   cursor: pointer;
   transition: all 0.3s;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .equipo-card:hover {
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   border-color: #007bff;
   transform: translateY(-5px);
 }
 
-.equipo-card h3 { margin: 0 0 10px 0; color: #007bff; font-size: 1.5em; }
-.equipo-card p { margin: 5px 0; color: #666; font-size: 1.1em; }
+.equipo-card h3 {
+  margin: 0 0 10px 0;
+  color: #007bff;
+  font-size: 1.5em;
+}
+
+.equipo-card p {
+  margin: 5px 0;
+  color: #666;
+  font-size: 1.1em;
+}
