@@ -1,3 +1,5 @@
+package com.altf4.altf4.repository;
+import com.altf4.altf4.entity.Equipo;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,13 +1,11 @@
-
-package com.altf4.controller;
+package com.altf4.altf4.controller;
+import com.altf4.altf4.entity.Equipo;
+import com.altf4.altf4.service.EquipoService;
 
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.web.bind.annotation.*;
-
-import com.altf4.entity.Equipo;
-import com.altf4.service.EquipoService;
 
 @RestController
 @RequestMapping("/equipos")
